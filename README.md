@@ -1,2 +1,2 @@
-# SoundCharm
-"SoundCharm" is an app that converts text into beautiful audio content, helping users experience wonderful written content through their sense of hearing.
+# PromptAssistant
+"PromptAssistant" is a small module developed using Python. Its goal is to be a convenient tool to help users write excellent prompts.
