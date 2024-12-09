@@ -7,7 +7,14 @@ class PromptTemplateModel(BaseModel):
     A data model for structured prompt templates.
     """
     task: str
-    context: Optional[str] = Field(default="", description="Optional context or background information")
+    role: Optional[str] = Field(
+        default="", 
+        description="Optional the role expected to be played by AI assistants."
+    )
+    context: Optional[str] = Field(
+        default="", 
+        description="Optional context or background information"
+    )
     input: Dict[str, Any] = Field(
         default={"type": "text", "data": ""},
         description="Input details including type and data"
@@ -24,3 +31,11 @@ class PromptTemplateModel(BaseModel):
         default={"tone": "neutral", "language": "English"},
         description="Style preferences such as tone and language"
     )
+
+    def model_dump(self, **kwargs):
+        # Only include fields that are not set to their default values
+        return super().model_dump(exclude_unset=True, **kwargs)
+    
+    def model_dump_json(self, **kwargs):
+        # Only include fields that are not set to their default values
+        return super().model_dump_json(exclude_defaults=True, **kwargs)

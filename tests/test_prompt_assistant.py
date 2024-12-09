@@ -24,6 +24,10 @@ if __name__ == "__main__":
     print("Created Prompt Template:")
     print(prompt)
 
+    # Print the prompt output
+    print("Prompt info:")
+    print(prompt.model_dump_json(indent=4))
+
     # Export templates to a file
     assistant.export_to_file("templates.json")
 
