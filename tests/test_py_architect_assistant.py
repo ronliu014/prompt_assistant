@@ -25,10 +25,13 @@ if __name__ == "__main__":
         style={"language": "English"}
     )
 
+    print("\n\nTest Case 1: Create a Prompt for Designing a Microservices Architecture:\n")
     print("\nCreated Prompt Template:")
+    print(prompt1)
+    print("\nPrompt1 json output:")
     print(prompt1.to_json())
-    print("\nPrompt1 Output:")
-    print(prompt1.to_json())
+    print("\nPrompt1 compact json output:")
+    print(prompt1.to_compact_json())
 
     # Test Case 2: Create a Prompt for Designing a High-Availability System
     # The user wants the assistant to design a high-availability Python system that ensures quick recovery in case of failures.
@@ -46,10 +49,13 @@ if __name__ == "__main__":
         style={"language": "English"}
     )
 
+    print("\n\nTest Case 2: Create a Prompt for Designing a High-Availability System:\n")
     print("\nCreated Prompt2 Template:")
+    print(prompt2)
+    print("\nPrompt2 json output:")
     print(prompt2.to_json())
-    print("\nPrompt2 Output:")
-    print(prompt2.to_json())
+    print("\nPrompt2 compact json output:")
+    print(prompt2.to_compact_json())
 
     # Test Case 3: Create a Prompt for Designing a Distributed Database System
     # The user wants the assistant to design a distributed database system that ensures data consistency and high performance.
@@ -70,7 +76,10 @@ if __name__ == "__main__":
         style={"language": "English"}
     )
 
+    print("\n\nTest Case 3: Create a Prompt for Designing a Distributed Database System:\n")
     print("\nCreated Prompt3 Template:")
+    print(prompt3)
+    print("\nPrompt3 json output:")
     print(prompt3.to_json())
-    print("\nPrompt3 Output:")
-    print(prompt3.to_json())
+    print("\nPrompt3 compact json output:")
+    print(prompt3.to_compact_json())

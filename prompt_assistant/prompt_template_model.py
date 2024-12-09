@@ -21,7 +21,7 @@ class PromptTemplateModel(BaseModel):
         description="Input details including type and data"
     )
     output: Dict[str, Any] = Field(
-        default={"type": "text", "format": "text", "examples": []},
+        default={"type": "text", "format": "text", "constraints": {"type_specific": []}, "examples": []},
         description="Output details including type, format, and examples"
     )
     constraints: Dict[str, Any] = Field(
