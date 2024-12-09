@@ -1,5 +1,5 @@
-from typing import List, Dict, Any
 from pydantic import ValidationError
+from typing import List, Dict, Any
 from .prompt_template_model import PromptTemplateModel
 import json
 
@@ -35,7 +35,7 @@ class PromptAssistant:
 
         :return: A list of all templates.
         """
-        return [template.dict() for template in self.templates]
+        return [template.model_dump() for template in self.templates]
 
     def clear_templates(self):
         """

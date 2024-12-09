@@ -15,6 +15,6 @@ class CustomAssistant(PromptAssistant):
         :return: A list of templates that match the keyword.
         """
         return [
-            template.dict() for template in self.templates
+            template.model_dump() for template in self.templates
             if keyword.lower() in template.task.lower()
         ]

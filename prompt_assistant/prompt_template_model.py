@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field, Optional, Any, Dict
+from pydantic import BaseModel, Field
+from typing import Optional, Any, Dict
 
 # Pydantic data model for prompt template
 class PromptTemplateModel(BaseModel):
