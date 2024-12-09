@@ -55,6 +55,18 @@ class PromptAssistant:
         else:
             raise TypeError("Invalid template. Must be an instance of PromptTemplateModel.")
 
+    def filter_templates_by_task(self, keyword: str) -> List[Dict[str, Any]]:
+        """
+        Filter templates based on a keyword in the task.
+
+        :param keyword: The keyword to filter by.
+        :return: A list of templates that match the keyword.
+        """
+        return [
+            template.model_dump() for template in self.templates
+            if keyword.lower() in template.task.lower()
+        ]
+
     def export_to_file(self, file_path: str):
         """
         Export all templates to a JSON file.
@@ -80,4 +92,4 @@ class PromptAssistant:
                     print(f"Error importing template: {e}")
 
     def __repr__(self):
-        return f"PromptAssistant(templates={len(self.templates)})"
+        return f"{self.__class__.__name__}(templates={len(self.templates)})"

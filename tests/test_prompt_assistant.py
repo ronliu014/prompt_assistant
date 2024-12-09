@@ -1,5 +1,4 @@
 from prompt_assistant import PromptAssistant
-from prompt_assistant import CustomAssistant
 
 # Example usage
 if __name__ == "__main__":
@@ -39,12 +38,12 @@ if __name__ == "__main__":
     print("\nImported Templates:")
     print(assistant.list_templates())
 
-    # Example of custom assistant usage
-    custom_assistant = CustomAssistant()
-    custom_assistant.create_prompt(
+    # Example of filter templates by task
+    assistant_1 = PromptAssistant()
+    assistant_1.create_prompt(
         task="Write a Python function",
         input={"type": "code"},
         output={"type": "code", "format": "Python"}
     )
     print("\nFiltered Templates by Task ('Python'):")
-    print(custom_assistant.filter_templates_by_task("Python"))
+    print(assistant_1.filter_templates_by_task("Python"))

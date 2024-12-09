@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional, Any, Dict
+import json
 
 # Pydantic data model for prompt template
 class PromptTemplateModel(BaseModel):
@@ -32,10 +33,18 @@ class PromptTemplateModel(BaseModel):
         description="Style preferences such as tone and language"
     )
 
-    def model_dump(self, **kwargs):
-        # Only include fields that are not set to their default values
-        return super().model_dump(exclude_unset=True, **kwargs)
+    def to_json(self) -> str:
+        """
+        Returns a pretty-printed JSON string of the model's data.
+        
+        :return: A JSON string with indentation for readability.
+        """
+        return self.model_dump_json(indent=4, exclude_unset=True)
     
-    def model_dump_json(self, **kwargs):
-        # Only include fields that are not set to their default values
-        return super().model_dump_json(exclude_defaults=True, **kwargs)
+    def to_compact_json(self) -> str:
+        """
+        Returns a compact JSON string of the model's data.
+        
+        :return: A JSON string without extra whitespace.
+        """
+        return self.model_dump_json(exclude_unset=True)
