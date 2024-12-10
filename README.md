@@ -1,6 +1,8 @@
 # prompt_assistant
+<!-- 
 [![PyPI version](https://img.shields.io/pypi/v/prompt_assistant.svg)](https://pypi.org/project/prompt_assistant/)
 [![Build Status](https://travis-ci.org/ronliu014/prompt_assistant.svg?branch=main)](https://travis-ci.org/ronliu014/prompt_assistant)
+-->
 `prompt_assistant` 是一个用于创建结构化提示的 Python 库。它提供了一个框架，用于以一致和结构化的方式定义提示，从而更容易生成内容，如产品描述、代码段和 JSON 数据。该库还包含了一系列预定义的助手类，如语言专家助手、产品设计师助手、Python 架构师助手、Python 编码助手、软件架构师助手和软件工程师助手等，以帮助用户更高效地完成日常工作。
 ## 目录结构
 ```
