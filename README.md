@@ -134,7 +134,7 @@ The library includes several examples to demonstrate how to use structured promp
 ## Contributing
 Contributions are welcome! Please read the [CONTRIBUTING.md](https://github.com/ronliu014/prompt_assistant/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/ronliu014/prompt_assistant/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/ronliu014/prompt_assistant/blob/main/LICENSE) file for details.
 ## Authors
 - **Ron Liu** - *Initial work* - [Ron Liu's GitHub Profile](https://github.com/ronliu014)
 See also the list of [contributors](https://github.com/ronliu014/prompt_assistant/graphs/contributors) who participated in this project.
