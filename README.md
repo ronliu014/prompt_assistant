@@ -56,7 +56,7 @@ from prompt_assistant import SoftwareEngineerAssistant
 language_expert = LanguageExpertAssistant()
 # 使用助手提供提示词
 prompt = language_expert.create_prompt("翻译以下句子：Hello World")
-print(prompt)
+print(prompt.to_compact_json())
 ```
 以下是一个使用 `ProductDesignerAssistant` 的简单示例：
 ```python
@@ -64,7 +64,7 @@ print(prompt)
 product_designer = ProductDesignerAssistant()
 # 使用助手提供提示词
 prompt = product_designer.create_prompt("设计一个用户友好的登录界面")
-print(prompt)
+print(prompt.to_compact_json())
 ```
 更多示例请参考各助手类的文档。
 ## 单元测试
