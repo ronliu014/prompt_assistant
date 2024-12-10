@@ -1,4 +1,4 @@
-from extensions import PyArchitectAssistant
+from exts import PyArchitectAssistant
 
 # Example usage
 if __name__ == "__main__":

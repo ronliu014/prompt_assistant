@@ -1,6 +1,6 @@
 from pydantic import ValidationError
 from typing import Optional, Dict, Any
-from prompt_assistant import PromptAssistant, PromptTemplateModel
+from core import PromptAssistant, PromptTemplateModel
 
 # Example PyCoderAssistant for extensions
 class PyCoderAssistant(PromptAssistant):

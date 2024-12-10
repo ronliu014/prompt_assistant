@@ -1,4 +1,4 @@
-from extensions import PyCoderAssistant
+from exts import PyCoderAssistant
 
 # Example usage
 if __name__ == "__main__":

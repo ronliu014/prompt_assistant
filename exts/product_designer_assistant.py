@@ -1,6 +1,6 @@
 from pydantic import ValidationError
 from typing import Optional, List
-from prompt_assistant import PromptAssistant, PromptTemplateModel
+from core import PromptAssistant, PromptTemplateModel
 
 # Example ProductDesignerAssistant for extensions
 class ProductDesignerAssistant(PromptAssistant):
