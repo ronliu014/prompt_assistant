@@ -1,4 +1,4 @@
-from prompt_assistant import PromptAssistant
+from core import PromptAssistant
 
 # Example usage
 if __name__ == "__main__":
