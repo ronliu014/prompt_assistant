@@ -1,5 +1,5 @@
 from pydantic import ValidationError
-from typing import Optional, List
+from typing import Any, Dict, Optional, List
 from core import PromptAssistant, PromptTemplateModel
 
 # Example ProductDesignerAssistant for extensions
@@ -12,6 +12,7 @@ class ProductDesignerAssistant(PromptAssistant):
         self,
         task: str,
         context: Optional[str] = "",
+        output: Dict[str, Any] = {},
         additional_constraints: Optional[List[str]] = None
     ) -> PromptTemplateModel:
         """
@@ -147,6 +148,8 @@ class ProductDesignerAssistant(PromptAssistant):
 '''
             ]
         }
+        if not output:
+            output = default_output
         constraints = {
             "rules": ["Provide detailed design proposals", "Include user needs analysis"],
             "time_limit": None,  # Default time limit
@@ -162,7 +165,7 @@ class ProductDesignerAssistant(PromptAssistant):
                 role=default_role,
                 context=default_context,
                 input=default_input,
-                output=default_output,
+                output=output,
                 constraints=constraints,
                 style=default_style
             )
