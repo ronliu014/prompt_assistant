@@ -7,6 +7,12 @@ from exts import SoftwareEngineerAssistant
 from core import PromptAssistant
 from core import PromptTemplateModel
 
+# prompt_assistant/__init__.py
+__version__ = '1.0.0'
+
+def get_version():
+    return __version__
+
 __all__ = [
     "LanguageExpertAssistant",
     "ProductDesignerAssistant",
@@ -15,5 +21,6 @@ __all__ = [
     "SoftwareArchitectAssistant",
     "SoftwareEngineerAssistant",
     "PromptAssistant",
-    "PromptTemplateModel"
+    "PromptTemplateModel",
+    "get_version"
 ]
