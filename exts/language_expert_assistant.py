@@ -21,17 +21,27 @@ class LanguageExpertAssistant(PromptAssistant):
         
         :param task: Description of the user's language analysis task.
         :param context: Optional background information.
-        :param additional_constraints: Optional list of additional constraint rules.
+        :param additional_input: Optional list of additional input params.
+        :param additional_output: Optional list of additional output params.
+        :param additional_constraints: Optional list of additional constraint params.
         :return: The created and validated prompt template.
         """
         default_role = "You are an experienced Language Analysis Expert proficient in analyzing and processing text in major global languages including Chinese, English, French, German, Japanese, and Korean."
         default_context = context if context else "Please perform a language analysis based on the provided task description."
-        default_input = {"type": "text", "data": [task]}
+
+        default_input = {
+            "type": "text", 
+            "data": [task],
+            "examples": []
+        }
         if additional_input:
             if "type" in additional_input:
                 default_input["type"] = additional_input["type"]
             if "data" in additional_input:
                 default_input["data"].extend(additional_input["data"])
+            if "examples" in additional_input:
+                default_input["examples"].extend(additional_input["examples"])
+
         default_output = {
             "type": "text",
             "format": "analysis_report",
@@ -48,6 +58,7 @@ class LanguageExpertAssistant(PromptAssistant):
                     default_output["constraints"]["type_specific"].extend(additional_output["constraints"]["type_specific"])
             if "examples" in additional_output:
                 default_output["examples"].extend(additional_output["examples"])
+
         default_constraints = {
             "rules": [
                 "Ensure accuracy and relevance in all analyses",
@@ -64,6 +75,7 @@ class LanguageExpertAssistant(PromptAssistant):
                 default_constraints["time_limit"] = additional_constraints["time_limit"]
             if "length_limit" in additional_constraints:
                 default_constraints["length_limit"] = additional_constraints["length_limit"] 
+
         default_style = {"language": "Chinese"}
 
         try:
