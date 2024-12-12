@@ -1,5 +1,5 @@
 from pydantic import ValidationError
-from typing import Any, Dict, Optional, List
+from typing import Any, Dict, Optional
 from core import PromptAssistant, PromptTemplateModel
 
 # Example SoftwareArchitectAssistant for extensions
@@ -12,9 +12,9 @@ class SoftwareArchitectAssistant(PromptAssistant):
         self,
         task: str,
         context: Optional[str] = None,
-        additional_input: Optional[List[str]] = None,
-        additional_output: Optional[List[str]] = None,
-        additional_constraints: Optional[List[str]] = None
+        additional_input: Optional[Dict[str, Any]] = None,
+        additional_output: Optional[Dict[str, Any]] = None,
+        additional_constraints: Optional[Dict[str, Any]] = None
     ) -> PromptTemplateModel:
         """
         Create a prompt template for a Software Architect, allowing the user to provide only the task and optional context and constraints.
