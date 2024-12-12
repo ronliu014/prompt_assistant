@@ -31,7 +31,7 @@ class ProductDesignerAssistant(PromptAssistant):
             if "type" in additional_input:
                 default_input["type"] = additional_input["type"]
             if "data" in additional_input:
-                default_input["data"].extend(additional_input)
+                default_input["data"].extend(additional_input["data"])
         default_output = {
             "type": "text",
             "format": "markdown",
@@ -47,7 +47,7 @@ class ProductDesignerAssistant(PromptAssistant):
                 if "type_specific" in additional_output["constraints"]:
                     default_output["constraints"]["type_specific"].extend(additional_output["constraints"]["type_specific"])
             if "examples" in additional_output:
-                default_output["examples"].extend(additional_output) 
+                default_output["examples"].extend(additional_output["examples"])
         default_constraints = {
             "rules": ["Provide detailed design proposals", "Include user needs analysis"],
             "time_limit": None,  # Default time limit
@@ -55,7 +55,7 @@ class ProductDesignerAssistant(PromptAssistant):
         }
         if additional_constraints:
             if "rules" in additional_constraints:
-                default_constraints["rules"].extend(additional_constraints)
+                default_constraints["rules"].extend(additional_constraints["rules"])
             if "time_limit" in additional_constraints:
                 default_constraints["time_limit"] = additional_constraints["time_limit"]
             if "length_limit" in additional_constraints:
