@@ -40,7 +40,7 @@ class PyCoderAssistant(PromptAssistant):
                 task=task if task else "Write a Python function to solve the following problem:",
                 role=self.ROLE,  # Set the internal role field
                 context=context if context else "Implement a Quick Sort algorithm that takes a list of integers and returns the sorted list.",
-                input=input_data if input_data else {"type": "text", "data": ""},
+                input=input_data if input_data else {"type": "text", "data": [""]},
                 output=output if output else {
                     "type": "code", 
                     "format": "python", 

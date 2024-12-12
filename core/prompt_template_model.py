@@ -16,7 +16,7 @@ class PromptTemplateModel(BaseModel):
         description="Optional context or background information"
     )
     input: Dict[str, Any] = Field(
-        default={"type": "text", "data": ""},
+        default={"type": "text", "data": []},
         description="Input details including type and data"
     )
     output: Dict[str, Any] = Field(

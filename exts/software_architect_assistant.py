@@ -1,5 +1,5 @@
 from pydantic import ValidationError
-from typing import Optional, List
+from typing import Any, Dict, Optional, List
 from core import PromptAssistant, PromptTemplateModel
 
 # Example SoftwareArchitectAssistant for extensions
@@ -12,6 +12,8 @@ class SoftwareArchitectAssistant(PromptAssistant):
         self,
         task: str,
         context: Optional[str] = "",
+        additional_input: Optional[List[str]] = None,
+        additional_output: Optional[List[str]] = None,
         additional_constraints: Optional[List[str]] = None
     ) -> PromptTemplateModel:
         """
@@ -24,14 +26,18 @@ class SoftwareArchitectAssistant(PromptAssistant):
         """
         default_role = "You are an experienced Software Architect with expertise in designing scalable, maintainable, and robust software systems."
         default_context = context if context else "Please design a software architecture based on the provided task description."
-        default_input = {"type": "text", "data": task}
+        default_input = {"type": "text", "data": [task]}
+        if additional_input:
+            default_input["data"].extend(additional_input)
         default_output = {
             "type": "text",
             "format": "architecture_plan_with_diagrams",
             "constraints": {"type_specific": ["Clear architecture diagrams", "Detailed explanations", "Inclusion of UML descriptions"]},
             "examples": []
         }
-        constraints = {
+        if additional_output:
+            default_input["examples"].extend(additional_output)
+        default_constraints = {
             "rules": [
                 "Adhere to industry-standard architectural patterns",
                 "Ensure scalability and maintainability",
@@ -41,8 +47,8 @@ class SoftwareArchitectAssistant(PromptAssistant):
             "length_limit": None  # Can be adjusted based on task requirements
         }
         if additional_constraints:
-            constraints["rules"].extend(additional_constraints)
-        default_style = {"tone": "formal", "language": "English"}
+            default_constraints["rules"].extend(additional_constraints)
+        default_style = {"language": "Chinese"}
 
         try:
             template = PromptTemplateModel(
@@ -51,7 +57,7 @@ class SoftwareArchitectAssistant(PromptAssistant):
                 context=default_context,
                 input=default_input,
                 output=default_output,
-                constraints=constraints,
+                constraints=default_constraints,
                 style=default_style
             )
             self.templates.append(template)

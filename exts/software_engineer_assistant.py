@@ -12,6 +12,8 @@ class SoftwareEngineerAssistant(PromptAssistant):
         self,
         task: str,
         context: Optional[str] = "",
+        additional_input: Optional[List[str]] = None,
+        additional_output: Optional[List[str]] = None,
         additional_constraints: Optional[List[str]] = None
     ) -> PromptTemplateModel:
         """
@@ -24,14 +26,18 @@ class SoftwareEngineerAssistant(PromptAssistant):
         """
         default_role = "You are an experienced Python software engineer, proficient in writing efficient and maintainable Python code, and well-versed in various Python frameworks and libraries."
         default_context = context if context else "Please write a Python code implementation based on the provided task description."
-        default_input = {"type": "text", "data": task}
+        default_input = {"type": "text", "data": [task]}
+        if additional_input:
+            default_input["data"].extend(additional_input)
         default_output = {
             "type": "text",
             "format": "code_with_comments",
             "constraints": {"type_specific": ["Clear code comments", "Includes code explanations and usage examples"]},
             "examples": []
         }
-        constraints = {
+        if additional_output:
+            default_input["examples"].extend(additional_output)
+        default_constraints = {
             "rules": [
                 "Code should adhere to object-oriented design principles",
                 "Code should ensure efficient algorithm implementation",
@@ -41,7 +47,7 @@ class SoftwareEngineerAssistant(PromptAssistant):
             "length_limit": None  # Can be adjusted based on task requirements
         }
         if additional_constraints:
-            constraints["rules"].extend(additional_constraints)
+            default_constraints["rules"].extend(additional_constraints)
         default_style = {"tone": "technical", "language": "English"}
 
         try:
@@ -51,7 +57,7 @@ class SoftwareEngineerAssistant(PromptAssistant):
                 context=default_context,
                 input=default_input,
                 output=default_output,
-                constraints=constraints,
+                constraints=default_constraints,
                 style=default_style
             )
             self.templates.append(template)

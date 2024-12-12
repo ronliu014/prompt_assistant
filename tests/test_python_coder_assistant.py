@@ -9,7 +9,7 @@ if __name__ == "__main__":
     # Create a prompt template for generating a quick sort algorithm
     prompt1 = assistant.create_prompt(
         task="Generate a Python function for the Quick Sort algorithm",
-        input_data={"type": "text", "data": "Implement a Quick Sort algorithm that takes a list of integers and returns the sorted list."},
+        input_data={"type": "text", "data": ["Implement a Quick Sort algorithm that takes a list of integers and returns the sorted list."]},
         output={
             "type": "code",
             "format": "Python",
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     # Create a prompt template for debugging Python code
     prompt2 = assistant.create_prompt(
         task="Debug the following Python code and provide a solution",
-        input_data={"type": "code", "data": "def add(a, b):\n    return a + b"},
+        input_data={"type": "code", "data": ["def add(a, b):\n    return a + b"]},
         constraints={"rules": ["Provide detailed error analysis", "Ensure the code runs correctly"]},
         style={"language": "English"}
     )
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         task="Optimize the following Python algorithm for better performance",
         input_data={
             "type": "text",
-            "data": "The current algorithm runs slowly when handling large datasets. How can it be optimized?"
+            "data": ["The current algorithm runs slowly when handling large datasets. How can it be optimized?"]
         },
         output={
             "type": "text",

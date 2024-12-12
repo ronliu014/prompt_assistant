@@ -12,7 +12,7 @@ if __name__ == "__main__":
         task="Design a microservices architecture for an e-commerce platform",
         input_data={
             "type": "text",
-            "data": "Design a scalable and maintainable microservices architecture for an online e-commerce platform handling high traffic and large volumes of transactions."
+            "data": ["Design a scalable and maintainable microservices architecture for an online e-commerce platform handling high traffic and large volumes of transactions."]
         },
         output={
             "type": "text",
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # The user wants the assistant to design a high-availability Python system that ensures quick recovery in case of failures.
     prompt2 = assistant.create_prompt(
         task="Design a high-availability system for real-time data processing",
-        input_data={"type": "text", "data": "Design a Python-based system that processes real-time data streams with minimal downtime and quick recovery in case of failures."},
+        input_data={"type": "text", "data": ["Design a Python-based system that processes real-time data streams with minimal downtime and quick recovery in case of failures."]},
         output={
             "type": "text",
             "format": "paragraph",
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         task="Design a distributed database system for a social media application",
         input_data={
             "type": "text",
-            "data": "Design a distributed database system for a social media application that ensures data consistency, scalability, and high performance."
+            "data": ["Design a distributed database system for a social media application that ensures data consistency, scalability, and high performance."]
         },
         output={
             "type": "text",
