@@ -47,3 +47,21 @@ class PromptTemplateModel(BaseModel):
         :return: A JSON string without extra whitespace.
         """
         return self.model_dump_json(exclude_unset=True)
+    
+    def dump_prompt(self) -> str:
+        """
+        Returns a formatted string containing the JSON representation of the prompt.
+
+        :return: A formatted string with the prompt's JSON data.
+        """
+        return f"""
+=======================Prompt json output===============================
+
+{self.to_json()}
+
+===================Prompt compact json output===========================
+
+{self.to_compact_json()}
+
+========================================================================
+"""
