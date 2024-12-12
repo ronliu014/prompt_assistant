@@ -13,7 +13,6 @@ class PyCoderAssistant(PromptAssistant):
         Initialize PyCoderAssistant with internal constants.
         """
         super().__init__()
-        self.ROLE = "You are an experienced Python software development expert, familiar with various Python frameworks and best practices."
 
     def create_prompt(
         self,
@@ -38,7 +37,7 @@ class PyCoderAssistant(PromptAssistant):
         try:
             template = PromptTemplateModel(
                 task=task if task else "Write a Python function to solve the following problem:",
-                role=self.ROLE,  # Set the internal role field
+                role="You are an experienced Python software development expert, familiar with various Python frameworks and best practices.",
                 context=context if context else "Implement a Quick Sort algorithm that takes a list of integers and returns the sorted list.",
                 input=input_data if input_data else {"type": "text", "data": [""]},
                 output=output if output else {

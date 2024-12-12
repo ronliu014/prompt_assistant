@@ -28,7 +28,10 @@ class SoftwareEngineerAssistant(PromptAssistant):
         default_context = context if context else "Please write a Python code implementation based on the provided task description."
         default_input = {"type": "text", "data": [task]}
         if additional_input:
-            default_input["data"].extend(additional_input)
+            if "type" in additional_input:
+                default_input["type"] = additional_input["type"]
+            if "data" in additional_input:
+                default_input["data"].extend(additional_input)
         default_output = {
             "type": "text",
             "format": "code_with_comments",
@@ -36,7 +39,15 @@ class SoftwareEngineerAssistant(PromptAssistant):
             "examples": []
         }
         if additional_output:
-            default_input["examples"].extend(additional_output)
+            if "type" in additional_output:
+                default_output["type"] = additional_output["type"]
+            if "format" in additional_output:
+                default_output["format"] = additional_output["format"]
+            if "constraints" in additional_output:
+                if "type_specific" in additional_output["constraints"]:
+                    default_output["constraints"]["type_specific"].extend(additional_output["constraints"]["type_specific"])
+            if "examples" in additional_output:
+                default_output["examples"].extend(additional_output)  
         default_constraints = {
             "rules": [
                 "Code should adhere to object-oriented design principles",
@@ -47,7 +58,12 @@ class SoftwareEngineerAssistant(PromptAssistant):
             "length_limit": None  # Can be adjusted based on task requirements
         }
         if additional_constraints:
-            default_constraints["rules"].extend(additional_constraints)
+            if "rules" in additional_constraints:
+                default_constraints["rules"].extend(additional_constraints)
+            if "time_limit" in additional_constraints:
+                default_constraints["time_limit"] = additional_constraints["time_limit"]
+            if "length_limit" in additional_constraints:
+                default_constraints["length_limit"] = additional_constraints["length_limit"]   
         default_style = {"language": "Chinese"}
 
         try:

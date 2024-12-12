@@ -13,7 +13,6 @@ class PyArchitectAssistant(PromptAssistant):
         Initialize PyArchitectAssistant with internal constants.
         """
         super().__init__()
-        self.ROLE = "You are an experienced Python software architect, proficient in designing efficient and scalable software architectures, and familiar with various architectural patterns and best practices."
 
     def create_prompt(
         self,
@@ -38,7 +37,7 @@ class PyArchitectAssistant(PromptAssistant):
         try:
             template = PromptTemplateModel(
                 task=task if task else "Design a scalable software architecture for the following problem:",
-                role=self.ROLE,  # Set internal role field
+                role="You are an experienced Python software architect, proficient in designing efficient and scalable software architectures, and familiar with various architectural patterns and best practices.",
                 context=context if context else "Develop a microservices-based architecture for a large-scale e-commerce platform.",
                 input=input_data if input_data else {"type": "text", "data": [""]},
                 output=output if output else {"type": "text", "format": "text", "constraints": {}, "examples": []},
