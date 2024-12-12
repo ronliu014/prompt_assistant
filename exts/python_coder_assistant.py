@@ -17,8 +17,8 @@ class PyCoderAssistant(PromptAssistant):
 
     def create_prompt(
         self,
-        task: Optional[str] = "",
-        context: Optional[str] = "",
+        task: str,
+        context: Optional[str] = None,
         input_data: Optional[Dict[str, Any]] = None,
         output: Optional[Dict[str, Any]] = None,
         constraints: Optional[Dict[str, Any]] = None,
@@ -61,7 +61,7 @@ class PyCoderAssistant(PromptAssistant):
                     "time_limit": None, 
                     "length_limit": None
                 },
-                style=style if style else {"tone": "professional", "language": "English"}
+                style=style if style else {"tone": "professional", "language": "Chinese"}
             )
             self.templates.append(template)
             return template

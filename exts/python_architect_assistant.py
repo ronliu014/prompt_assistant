@@ -18,7 +18,7 @@ class PyArchitectAssistant(PromptAssistant):
     def create_prompt(
         self,
         task: str,
-        context: Optional[str] = "",
+        context: Optional[str] = None,
         input_data: Optional[Dict[str, Any]] = None,
         output: Optional[Dict[str, Any]] = None,
         constraints: Optional[Dict[str, Any]] = None,
@@ -43,7 +43,7 @@ class PyArchitectAssistant(PromptAssistant):
                 input=input_data if input_data else {"type": "text", "data": [""]},
                 output=output if output else {"type": "text", "format": "text", "constraints": {}, "examples": []},
                 constraints=constraints if constraints else {"rules": ["Ensure architectural scalability and maintainability"], "time_limit": None, "length_limit": None},
-                style=style if style else {"tone": "professional", "language": "English"}
+                style=style if style else {"tone": "professional", "language": "Chinese"}
             )
             self.templates.append(template)
             return template

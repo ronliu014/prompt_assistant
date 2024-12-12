@@ -11,7 +11,7 @@ class LanguageExpertAssistant(PromptAssistant):
     def create_prompt(
         self,
         task: str,
-        context: Optional[str] = "",
+        context: Optional[str] = None,
         additional_input: Optional[List[str]] = None,
         additional_output: Optional[List[str]] = None,
         additional_constraints: Optional[List[str]] = None
@@ -48,7 +48,7 @@ class LanguageExpertAssistant(PromptAssistant):
         }
         if additional_constraints:
             default_constraints["rules"].extend(additional_constraints)
-        default_style = {"tone": "formal", "language": "English"}
+        default_style = {"language": "Chinese"}
 
         try:
             template = PromptTemplateModel(
