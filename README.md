@@ -1,165 +1,175 @@
 # prompt_assistant
-<!--
-[![PyPI version](https://img.shields.io/pypi/v/prompt_assistant.svg)](https://pypi.org/project/prompt_assistant/)
-[![Build Status](https://travis-ci.org/ronliu014/prompt_assistant.svg?branch=main)](https://travis-ci.org/ronliu014/prompt_assistant)
--->
-`prompt_assistant` is a Python library for creating structured prompts. It provides a framework for defining prompts in a consistent and structured way, making it easier to generate content like product descriptions, code snippets, and JSON data. The library also includes a series of predefined assistant classes, such as Language Expert Assistant, Product Designer Assistant, Python Architect Assistant, Python Coder Assistant, Software Architect Assistant, and Software Engineer Assistant, to help users work more efficiently.
-## Table of Contents
-*   [Features](#features)
-*   [Installation](#installation)
-*   [Usage](#usage)
-*   [Examples](#examples)
-*   [Contributing](#contributing)
-*   [License](#license)
-*   [Authors](#authors)
-*   [Acknowledgments](#acknowledgments)
-*   [Sponsors](#sponsors)
-*   [Support](#support)
-*   [Stay in Touch](#stay-in-touch)
-*   [Further Reading](#further-reading)
-## Features
-*   **Structured Prompt Framework**: The library follows a structured prompt framework that defines the task, context, input, output, constraints, and style for each prompt.
-*   **Modular Design**: Each field in the prompt framework is independent and clearly defined, allowing for easy parsing and extension.
-*   **Flexibility**: The `context` and `constraints` fields allow for flexible adjustment of task scope.
-*   **Extensibility**: Supports adding custom fields to the prompt framework, such as `metadata` and `references`.
-*   **Programmatic Support**: The JSON format is easy to parse and program, making it suitable for automation and integration with other systems.
+
+[English](#english) | [中文](#chinese)
+
+<h2 id="english">English</h2>
+
+`prompt_assistant` is a Python library that helps create structured prompts for AI interactions. It provides a systematic framework for generating high-quality prompts across various domains like software development, product design, and language tasks.
+
+## Key Features
+
+- **Structured Prompt Framework**: Define prompts with clear task, context, input/output specifications
+- **Multiple Assistant Types**: Pre-built assistants for different domains:
+  - Language Expert Assistant
+  - Product Designer Assistant  
+  - Python Architect Assistant
+  - Python Coder Assistant
+  - Software Architect Assistant
+  - Software Engineer Assistant
+- **Flexible & Extensible**: Easy to customize and add new assistant types
+- **JSON Compatible**: All prompts can be serialized to/from JSON
+
 ## Installation
-To install prompt_assistant, run the following command:
+
 ```bash
 pip install prompt_assistant
 ```
-Ensure your Python environment is version 3.x.
-## Usage
-The prompt_assistant library can be used to create and manage structured prompts. Here's an example of how to use it:
+
+Requires Python 3.10+
+
+## Quick Start
+
 ```python
-from prompt_assistant import PromptTemplateModel, PromptAssistant
-# Define a prompt
-prompt = PromptTemplateModel(
-    task="Generate a product description",
-    context="E-commerce website product description",
-    input={
-        "type": "text",
-        "data": "A lightweight laptop with a touch screen, brand ABC, weight 1.2kg, suitable for students and business people."
-    },
-    output={
-        "type": "text",
-        "format": "paragraph",
-        "examples": [
-            "This lightweight ABC laptop weighs only 1.2kg and features a touch screen, making it perfect for students and business people."
-        ]
-    },
-    constraints={
-        "length_limit": "100 characters",
-        "rules": ["No negative descriptions", "Do not deviate from product features"]
-    },
-    style={
-        "tone": "professional",
-        "language": "Chinese"
-    }
-)
-# Generate output
-output = prompt.to_json()
-print(output)
-```
-## Examples
-The library includes several examples to demonstrate how to use structured prompts for different tasks:
-*   **Generate a product description**: Create a prompt for generating a product description for an e-commerce website.
-*   **Generate Python code**: Define a prompt for generating a Python function that calculates the sum of two numbers.
-*   **Generate JSON data**: Design a JSON data template for a user information card to display basic user information.
-## Contributing
-Contributions are welcome! Please read the [CONTRIBUTING.md](https://github.com/ronliu014/prompt_assistant/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/ronliu014/prompt_assistant/blob/main/LICENSE) file for details.
-## Authors
-- **Ron Liu** - *Initial work* - [Ron Liu's GitHub Profile](https://github.com/ronliu014)
-See also the list of [contributors](https://github.com/ronliu014/prompt_assistant/graphs/contributors) who participated in this project.
-## Acknowledgments
-## Sponsors
-## Support
-If you are having issues, please let us know by filing an issue on GitHub.
-## Stay in Touch
-- [Discussion Group](https://example.com/discussion)
-- [Twitter](https://twitter.com/prompt_assistant)
-## Further Reading
-For more information, see the following resources:
-- [Python Documentation](https://docs.python.org/3/)
-- [Pydantic Documentation](https://pydantic-docs.helpmanual.io/)
----
-## 目录结构
-```plaintext
-prompt_assistant/
-|-- core/
-|   |-- __init__.py
-|   |-- prompt_assistant.py   # 提示词助手基类
-|   |-- prompt_template_model.py  # 提示词模板类
-|-- exts/                     # 提示词助手类目录
-|   |-- __init__.py
-|   |-- language_expert_assistant.py
-|   |-- product_designer_assistant.py
-|   |-- python_architect_assistant.py
-|   |-- python_coder_assistant.py
-|   |-- software_architect_assistant.py
-|   |-- software_engineer_assistant.py
-|-- tests/                    # 单元测试目录
-|   |-- __init__.py
-|   |-- test_language_expert_assistant.py
-|   |-- test_product_designer_assistant.py
-|   |-- test_prompt_assistant.py
-|   |-- test_python_architect_assistant.py
-|   |-- test_python_coder_assistant.py
-|   |-- test_software_architect_assistant.py
-|   |-- test_software_engineer_assistant.py
-|-- __init__.py
-|-- README.md
-|-- setup.py
-|-- LICENSE
-```
-## 安装
-使用以下命令安装 `prompt_assistant`：
-```bash
-pip install prompt_assistant
-```
-确保你的 Python 环境为 3.x 版本。
-## 使用
-### 导入模块
-```python
-from prompt_assistant import LanguageExpertAssistant
-from prompt_assistant import ProductDesignerAssistant
-from prompt_assistant import PyArchitectAssistant
 from prompt_assistant import PyCoderAssistant
-from prompt_assistant import SoftwareArchitectAssistant
-from prompt_assistant import SoftwareEngineerAssistant
+
+# Create a Python coding assistant
+assistant = PyCoderAssistant()
+
+# Generate a prompt for writing a function
+prompt = assistant.create_prompt(
+    "Write a function to calculate fibonacci numbers"
+)
+
+# Get the structured prompt as JSON
+prompt_json = prompt.to_json()
 ```
-### 示例
-以下是一个使用 `LanguageExpertAssistant` 的简单示例：
+
+## Documentation
+
+Each assistant type provides specialized prompting capabilities:
+
+- **Language Expert**: Translation and language-related tasks
+- **Product Designer**: UI/UX and product design specifications
+- **Python Architect**: High-level Python architecture design
+- **Python Coder**: Python implementation details
+- **Software Architect**: System architecture design
+- **Software Engineer**: General software engineering tasks
+
+## Examples
+
 ```python
-# 创建语言专家助手实例
-language_expert = LanguageExpertAssistant()
-# 使用助手提供提示词
-prompt = language_expert.create_prompt("翻译以下句子：Hello World")
-print(prompt.to_compact_json())
+# Using Language Expert Assistant
+from prompt_assistant import LanguageExpertAssistant
+
+expert = LanguageExpertAssistant()
+prompt = expert.create_prompt("Translate: Hello World")
+print(prompt.to_json())
+
+# Using Product Designer Assistant 
+from prompt_assistant import ProductDesignerAssistant
+
+designer = ProductDesignerAssistant()
+prompt = designer.create_prompt("Design a user-friendly login interface")
+print(prompt.to_json())
 ```
-以下是一个使用 `ProductDesignerAssistant` 的简单示例：
-```python
-# 创建产品设计师助手实例
-product_designer = ProductDesignerAssistant()
-# 使用助手提供提示词
-prompt = product_designer.create_prompt("设计一个用户友好的登录界面")
-print(prompt.to_compact_json())
-```
-更多示例请参考各助手类的文档。
-## 单元测试
-运行以下命令以执行单元测试：
+
+## License
+
+MIT License
+
+## Author
+
+- **Ron Liu** - *Initial work* - [GitHub](https://github.com/ronliu014)
+- Email: 66141975@qq.com
+
+For questions or suggestions, please feel free to:
+1. Open an issue on GitHub
+2. Contact author directly via email
+3. Submit a pull request
+
+---
+
+<h2 id="chinese">中文</h2>
+
+`prompt_assistant` 是一个用于创建结构化AI提示词的Python库。它为不同领域(如软件开发、产品设计和语言任务)提供了系统化的提示词生成框架。
+
+## 主要特性
+
+- **结构化提示框架**: 通过明确的任务、上下文、输入/输出规范来定义提示词
+- **多种助手类型**: 预置多种专业领域助手:
+  - 语言专家助手
+  - 产品设计师助手
+  - Python架构师助手
+  - Python开发助手
+  - 软件架构师助手
+  - 软件工程师助手
+- **灵活且可扩展**: 易于自定义和添加新的助手类型
+- **JSON兼容**: 所有提示词可以与JSON格式互转
+
+## 安装
+
 ```bash
-python -m unittest discover -s tests
+pip install prompt_assistant
 ```
-这将验证库的功能是否按预期工作。
-## 许可证
-本项目使用 [MIT License](LICENSE)。
-## 贡献
-欢迎贡献者提交 PR 或提出问题。请遵循以下准则：
-- 确保代码风格与现有代码保持一致。
-- 添加适当的单元测试。
-- 更新文档以反映任何更改。
-## 联系方式
-如有任何问题，请通过邮箱 [66141975@qq.com](mailto:66141975@qq.com) 联系我们。
+
+需要Python 3.10+版本
+
+## 快速开始
+
+```python
+from prompt_assistant import PyCoderAssistant
+
+# 创建Python编程助手
+assistant = PyCoderAssistant()
+
+# 生成编写函数的提示词
+prompt = assistant.create_prompt(
+    "编写一个计算斐波那契数列的函数"
+)
+
+# 获取JSON格式的结构化提示词
+prompt_json = prompt.to_json()
+```
+
+## 文档说明
+
+每种助手类型提供专门的提示词能力:
+
+- **语言专家**: 翻译和语言相关任务
+- **产品设计师**: UI/UX和产品设计规范
+- **Python架构师**: Python高层架构设计
+- **Python开发者**: Python实现细节
+- **软件架构师**: 系统架构设计
+- **软件工程师**: 通用软件工程任务
+
+## 使用示例
+
+```python
+# 使用语言专家助手
+from prompt_assistant import LanguageExpertAssistant
+
+expert = LanguageExpertAssistant()
+prompt = expert.create_prompt("翻译: Hello World")
+print(prompt.to_json())
+
+# 使用产品设计师助手
+from prompt_assistant import ProductDesignerAssistant
+
+designer = ProductDesignerAssistant()
+prompt = designer.create_prompt("设计一个用户友好的登录界面")
+print(prompt.to_json())
+```
+
+## 开源协议
+
+MIT License
+
+## 作者
+
+- **Ron Liu** - *Initial work* - [GitHub](https://github.com/ronliu014)
+- Email: 66141975@qq.com
+
+如有问题或建议，欢迎:
+1. 在GitHub上提Issue
+2. 通过邮件直接联系作者
+3. 提交Pull Request
