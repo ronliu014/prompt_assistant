@@ -14,7 +14,8 @@ class WebDeveloperAssistant(PromptAssistant):
         context: Optional[str] = None,
         additional_input: Optional[Dict[str, Any]] = None,
         additional_output: Optional[Dict[str, Any]] = None,
-        additional_constraints: Optional[Dict[str, Any]] = None
+        additional_constraints: Optional[Dict[str, Any]] = None,
+        additional_cot: Optional[Dict[str, Any]] = None
     ) -> PromptTemplateModel:
         """
         Create a prompt template for a Web Developer, allowing the user to provide the task and optional context.
@@ -24,6 +25,7 @@ class WebDeveloperAssistant(PromptAssistant):
         :param additional_input: Optional list of additional input params.
         :param additional_output: Optional list of additional output params.
         :param additional_constraints: Optional list of additional constraint params.
+        :param additional_cot: Optional additional chain of thought configuration.
         :return: The created and validated prompt template.
         """
         default_role = (
@@ -91,6 +93,18 @@ class WebDeveloperAssistant(PromptAssistant):
 
         default_style = {"language": "Chinese"}
 
+        default_cot = {
+            "enable": False,
+            "instructions": "",
+            "format": ""
+        }
+        if additional_cot:
+            default_cot["enable"] = True
+            if "instructions" in additional_cot:
+                default_cot["instructions"] = additional_cot["instructions"]
+            if "format" in additional_cot:
+                default_cot["format"] = additional_cot["format"]
+
         try:
             template = PromptTemplateModel(
                 task=task,
@@ -99,7 +113,8 @@ class WebDeveloperAssistant(PromptAssistant):
                 input=default_input,
                 output=default_output,
                 constraints=default_constraints,
-                style=default_style
+                style=default_style,
+                chain_of_thought=default_cot
             )
             self.templates.append(template)
             return template

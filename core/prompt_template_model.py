@@ -31,6 +31,15 @@ class PromptTemplateModel(BaseModel):
         default={"tone": "neutral", "language": "English"},
         description="Style preferences such as tone and language"
     )
+    chain_of_thought: Optional[Dict[str, Any]] = Field(
+        default={"enable": False, "instructions": "", "format": ""},
+        description="""
+        Optional Chain-of-Thought (COT) configuration.
+        - enable: Whether to enable COT (boolean).
+        - instructions: Specific instructions for the reasoning process (optional).
+        - format: Desired format for the reasoning output (optional).
+        """
+    )
 
     def to_json(self) -> str:
         """

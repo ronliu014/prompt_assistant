@@ -65,3 +65,37 @@ if __name__ == "__main__":
     print(prompt4.to_json())
     print("\nprompt4 compact json output:")
     print(prompt4.to_compact_json())
+
+    # Test Case 5: Testing Chain of Thought Output
+    prompt5 = assistant.create_prompt(
+        task="Create a responsive grid layout system with CSS Grid.",
+        context="The grid system should be flexible and support both fixed and fluid layouts.",
+        additional_cot={"enable": True, "instructions": "Explain your thought process step by step", "format": "chain_of_thought_with_code"}
+    )
+
+    print("\nTest Case 5: Testing Chain of Thought Output:\n")
+    print("\nCreated Prompt5 Template:")
+    print(prompt5)
+    print("\nPrompt5 json output:")
+    print(prompt5.to_json())
+    print("\nPrompt5 compact json output:")
+    print(prompt5.to_compact_json())
+
+    # Test Case 6: Testing Chain of Thought Output with Additional Constraints
+    prompt6 = assistant.create_prompt(
+        task="Create a responsive grid layout system with CSS Grid.",
+        context="The grid system should be flexible and support both fixed and fluid layouts.",
+        additional_cot={"enable": True, "instructions": "Explain your thought process step by step", "format": "chain_of_thought_with_code"},
+        additional_constraints={"rules": [
+            "Must support different screen sizes",
+            "Should include fallback for older browsers"
+        ]}
+    )
+
+    print("\nTest Case 6: Testing Chain of Thought Output with Additional Constraints:\n")
+    print("\nCreated Prompt6 Template:")
+    print(prompt6)
+    print("\nPrompt6 json output:")
+    print(prompt6.to_json())
+    print("\nPrompt6 compact json output:")
+    print(prompt6.to_compact_json())

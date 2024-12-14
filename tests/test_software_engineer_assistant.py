@@ -64,3 +64,64 @@ if __name__ == "__main__":
     print(prompt4.to_json())
     print("\nprompt4 compact json output:")
     print(prompt4.to_compact_json())
+
+    # Test Case 5: Creating a Python Programming Task with COT Enabled
+    # Scenario 5: User provides task description and enables COT
+    prompt5 = assistant.create_prompt(
+        task="Write a Python program to implement the binary search algorithm.",
+        context="This algorithm will be used for fast searching in large datasets, requiring optimized code to enhance search efficiency.",
+        chain_of_thought={
+            "enable": True,
+            "instructions": "Please detail the design rationale and each step of the logic.",
+            "format": "Step-by-step explanation, each step with brief description."
+        }
+    )
+
+    print("\n\nTest Case 5: Creating a Python Programming Task with COT Enabled:\n")
+    print("\nCreated Prompt5 Template:")
+    print(prompt5)
+    print("\nPrompt5 json output:")
+    print(assistant.to_json(prompt5))
+    print("\nPrompt5 compact json output:")
+    print(assistant.to_compact_json(prompt5))
+
+    # Test Case 6: Creating a Python Programming Task with Additional Constraints and COT
+    # Scenario 6: User provides task description, additional constraints, and enables COT
+    prompt6 = assistant.create_prompt(
+        task="Write a Python program to implement the binary search algorithm.",
+        additional_constraints=["Code must support custom comparison functions", "Should handle empty lists and single-element lists"],
+        chain_of_thought={
+            "enable": True,
+            "instructions": "Provide a detailed reasoning process for each design decision.",
+            "format": "Logical reasoning steps with explanations."
+        }
+    )
+
+    print("\n\nTest Case 6: Creating a Python Programming Task with Additional Constraints and COT:\n")
+    print("\nCreated Prompt6 Template:")
+    print(prompt6)
+    print("\nPrompt6 json output:")
+    print(prompt6.to_json())
+    print("\nPrompt6 compact json output:")
+    print(prompt6.to_compact_json())
+
+    # Test Case 7: Creating a Python Programming Task with Context, Additional Constraints, and COT
+    # Scenario 7: User provides task description, context, additional constraints, and enables COT
+    prompt7 = assistant.create_prompt(
+        task="Write a Python program to implement the binary search algorithm.",
+        context="This algorithm will be used for fast searching in large datasets, requiring optimized code to enhance search efficiency.",
+        additional_constraints=["Code must support custom comparison functions", "Should handle empty lists and single-element lists"],
+        chain_of_thought={
+            "enable": True,
+            "instructions": "Please provide a comprehensive reasoning process for the implementation steps.",
+            "format": "Detailed step-by-step reasoning with explanations."
+        }
+    )
+
+    print("\nTest Case 7: Creating a Python Programming Task with Context, Additional Constraints, and COT:\n")
+    print("\nCreated Prompt7 Template:")
+    print(prompt7)
+    print("\nPrompt7 json output:")
+    print(assistant.to_json(prompt7))
+    print("\nPrompt7 compact json output:")
+    print(assistant.to_compact_json(prompt7))

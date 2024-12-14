@@ -64,3 +64,48 @@ if __name__ == "__main__":
     print(prompt4.to_json())
     print("\nprompt4 compact json output:")
     print(prompt4.to_compact_json())
+
+    # Test Case 5: Testing Chain of Thought Output
+    prompt5 = assistant.create_prompt(
+        task="Design a microservices architecture for an e-commerce platform",
+        additional_cot={"enable": True, "instructions": "Explain your thought process step by step", "format": "chain_of_thought_with_code"}
+    )
+
+    print("\nTest Case 5: Testing Chain of Thought Output:\n")
+    print("\nCreated Prompt5 Template:")
+    print(prompt5)
+    print("\nPrompt5 json output:")
+    print(prompt5.to_json())
+    print("\nPrompt5 compact json output:")
+    print(prompt5.to_compact_json())
+
+    # Test Case 6: Testing Chain of Thought Output with Additional Constraints
+    prompt6 = assistant.create_prompt(
+        task="Design a microservices architecture for an e-commerce platform",
+        additional_cot={"enable": True, "instructions": "Explain your thought process step by step", "format": "chain_of_thought_with_code"},
+        additional_constraints={"rules": ["Ensure fault tolerance and scalability"], "length_limit": "500 words max"}
+    )   
+
+    print("\nTest Case 6: Testing Chain of Thought Output with Additional Constraints:\n")
+    print("\nCreated Prompt6 Template:")
+    print(prompt6)
+    print("\nPrompt6 json output:")
+    print(prompt6.to_json())
+    print("\nPrompt6 compact json output:")
+    print(prompt6.to_compact_json())
+
+    # Test Case 7: Testing Chain of Thought Output with Additional Constraints and Style
+    prompt7 = assistant.create_prompt(
+        task="Design a microservices architecture for an e-commerce platform",
+        additional_cot={"enable": True, "instructions": "Explain your thought process step by step", "format": "chain_of_thought_with_code"},
+        additional_constraints={"rules": ["Ensure fault tolerance and scalability"], "length_limit": "500 words max"},
+        style={"language": "English"}
+    )   
+
+    print("\nTest Case 7: Testing Chain of Thought Output with Additional Constraints and Style:\n")
+    print("\nCreated Prompt7 Template:")
+    print(prompt7)
+    print("\nPrompt7 json output:")
+    print(prompt7.to_json())
+    print("\nPrompt7 compact json output:")
+    print(prompt7.to_compact_json())

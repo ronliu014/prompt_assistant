@@ -21,7 +21,8 @@ class PyCoderAssistant(PromptAssistant):
         input_data: Optional[Dict[str, Any]] = None,
         output: Optional[Dict[str, Any]] = None,
         constraints: Optional[Dict[str, Any]] = None,
-        style: Optional[Dict[str, Any]] = None
+        style: Optional[Dict[str, Any]] = None,
+        cot: Optional[Dict[str, Any]] = None
     ) -> PromptTemplateModel:
         """
         Create a Python software expert prompt template and validate it using Pydantic.
@@ -32,6 +33,7 @@ class PyCoderAssistant(PromptAssistant):
         :param output: Details of the output, including type, format, and examples.
         :param constraints: Constraints such as rules, time limits, and length limits.
         :param style: Style preferences such as tone and language.
+        :param cot: Optional chain of thought configuration.
         :return: The created and validated prompt template.
         """
         try:
@@ -60,7 +62,8 @@ class PyCoderAssistant(PromptAssistant):
                     "time_limit": None, 
                     "length_limit": None
                 },
-                style=style if style else {"tone": "professional", "language": "Chinese"}
+                style=style if style else {"tone": "professional", "language": "Chinese"},
+                chain_of_thought=cot if cot else {"enable": False, "instructions": "", "format": ""}
             )
             self.templates.append(template)
             return template

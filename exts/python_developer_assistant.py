@@ -14,7 +14,8 @@ class PythonDeveloperAssistant(PromptAssistant):
         context: Optional[str] = None,
         additional_input: Optional[Dict[str, Any]] = None,
         additional_output: Optional[Dict[str, Any]] = None,
-        additional_constraints: Optional[Dict[str, Any]] = None
+        additional_constraints: Optional[Dict[str, Any]] = None,
+        additional_cot: Optional[Dict[str, Any]] = None
     ) -> PromptTemplateModel:
         """
         Create a prompt template for a Python developer, allowing the user to provide only the task and optional context and constraints.
@@ -24,6 +25,7 @@ class PythonDeveloperAssistant(PromptAssistant):
         :param additional_input: Optional additional input parameters.
         :param additional_output: Optional additional output parameters.
         :param additional_constraints: Optional additional constraint rules.
+        :param additional_cot: Optional additional chain of thought configuration.
         :return: The created and validated prompt template.
         """
         # Set default role description
@@ -91,6 +93,18 @@ class PythonDeveloperAssistant(PromptAssistant):
         # Set default style
         default_style = {"language": "Chinese", "tone": "professional"}
 
+        default_cot = {
+            "enable": False,
+            "instructions": "",
+            "format": ""
+        }
+        if additional_cot:
+            default_cot["enable"] = True
+            if "instructions" in additional_cot:
+                default_cot["instructions"] = additional_cot["instructions"]
+            if "format" in additional_cot:
+                default_cot["format"] = additional_cot["format"]
+
         try:
             template = PromptTemplateModel(
                 task=task,
@@ -99,7 +113,8 @@ class PythonDeveloperAssistant(PromptAssistant):
                 input=default_input,
                 output=default_output,
                 constraints=default_constraints,
-                style=default_style
+                style=default_style,
+                chain_of_thought=default_cot
             )
             self.templates.append(template)
             return template

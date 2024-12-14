@@ -23,7 +23,8 @@ if __name__ == "__main__":
     # Scenario 2: The user provides a web development task along with specific background information.
     prompt2 = assistant.create_prompt(
         task="Write a Python program to implement the binary search algorithm.",
-        context="This algorithm will be used for fast searching in large datasets, requiring optimized code to enhance search efficiency."
+        context="This algorithm will be used for fast searching in large datasets, requiring optimized code to enhance search efficiency.",
+        chain_of_thought=True
     )
 
     print("\n\nTest Case 2: User Provides Task Description and Background Information:\n")
@@ -70,3 +71,23 @@ if __name__ == "__main__":
     print(prompt4.to_json())
     print("\nprompt4 compact json output:")
     print(prompt4.to_compact_json())
+
+    # Test Case 5: Testing Chain of Thought Output
+    prompt5 = assistant.create_prompt(
+        task="Implement a custom sorting algorithm for a specific use case.",
+        context="The sorting algorithm needs to handle partially sorted data efficiently.",
+        additional_cot={"enable": True, "instructions": "Explain your thought process step by step", "format": "chain_of_thought_with_code"},
+        additional_constraints={"rules": [
+            "Must handle edge cases gracefully",
+            "Should provide performance analysis"
+        ]}
+    )
+
+    print("\nTest Case 5: Testing Chain of Thought Output:\n")
+    print("\nCreated Prompt5 Template:")
+    print(prompt5)
+    print("\nPrompt5 json output:")
+    print(prompt5.to_json())
+    print("\nPrompt5 compact json output:")
+    print(prompt5.to_compact_json())
+
