@@ -10,7 +10,7 @@ from core import PromptAssistant
 from core import PromptTemplateModel
 
 # prompt_assistant/__init__.py
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 def get_version():
     return __version__
