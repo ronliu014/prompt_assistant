@@ -25,7 +25,6 @@ class PythonDeveloperAssistant(PromptAssistant):
         :param additional_input: Optional additional input parameters.
         :param additional_output: Optional additional output parameters.
         :param additional_constraints: Optional additional constraint rules.
-        :param additional_cot: Optional additional chain of thought configuration.
         :return: The created and validated prompt template.
         """
         # Set default role description
@@ -93,6 +92,7 @@ class PythonDeveloperAssistant(PromptAssistant):
         # Set default style
         default_style = {"language": "Chinese", "tone": "professional"}
 
+        # 添加默认的 chain of thought 配置
         default_cot = {
             "enable": False,
             "instructions": "",
