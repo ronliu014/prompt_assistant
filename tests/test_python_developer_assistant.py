@@ -76,7 +76,6 @@ if __name__ == "__main__":
         task="Implement a custom sorting algorithm for a specific use case.",
         context="The sorting algorithm needs to handle partially sorted data efficiently.",
         additional_cot={
-            "enable": True,
             "instructions": "Explain your thought process step by step",
             "format": "chain_of_thought_with_code"
         },

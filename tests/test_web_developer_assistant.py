@@ -70,7 +70,10 @@ if __name__ == "__main__":
     prompt5 = assistant.create_prompt(
         task="Create a responsive grid layout system with CSS Grid.",
         context="The grid system should be flexible and support both fixed and fluid layouts.",
-        additional_cot={"enable": True, "instructions": "Explain your thought process step by step", "format": "chain_of_thought_with_code"}
+        additional_cot={
+            "instructions": "Explain your thought process step by step", 
+            "format": "chain_of_thought_with_code"
+            }
     )
 
     print("\nTest Case 5: Testing Chain of Thought Output:\n")
@@ -86,7 +89,6 @@ if __name__ == "__main__":
         task="Create a responsive grid layout system with CSS Grid.",
         context="The grid system should be flexible and support both fixed and fluid layouts.",
         additional_cot={
-            "enable": True,
             "instructions": "Explain your thought process step by step",
             "format": "chain_of_thought_with_code"
         },

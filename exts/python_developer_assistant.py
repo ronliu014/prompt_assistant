@@ -94,16 +94,19 @@ class PythonDeveloperAssistant(PromptAssistant):
 
         # 添加默认的 chain of thought 配置
         default_cot = {
-            "enable": False,
             "instructions": "",
-            "format": ""
+            "format": "",
+            "workflow":[]
         }
         if additional_cot:
-            default_cot["enable"] = True
             if "instructions" in additional_cot:
                 default_cot["instructions"] = additional_cot["instructions"]
             if "format" in additional_cot:
                 default_cot["format"] = additional_cot["format"]
+            if "workflow" in additional_cot:
+                default_cot["workflow"] = additional_cot["workflow"]
+        else:
+            default_cot = None
 
         try:
             template = PromptTemplateModel(

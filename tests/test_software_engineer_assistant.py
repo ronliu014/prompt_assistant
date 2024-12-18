@@ -70,8 +70,7 @@ if __name__ == "__main__":
     prompt5 = assistant.create_prompt(
         task="Write a Python program to implement the binary search algorithm.",
         context="This algorithm will be used for fast searching in large datasets, requiring optimized code to enhance search efficiency.",
-        chain_of_thought={
-            "enable": True,
+        additional_cot={
             "instructions": "Please detail the design rationale and each step of the logic.",
             "format": "Step-by-step explanation, each step with brief description."
         }
@@ -81,17 +80,16 @@ if __name__ == "__main__":
     print("\nCreated Prompt5 Template:")
     print(prompt5)
     print("\nPrompt5 json output:")
-    print(assistant.to_json(prompt5))
+    print(prompt5.to_json())
     print("\nPrompt5 compact json output:")
-    print(assistant.to_compact_json(prompt5))
+    print(prompt5.to_compact_json())
 
     # Test Case 6: Creating a Python Programming Task with Additional Constraints and COT
     # Scenario 6: User provides task description, additional constraints, and enables COT
     prompt6 = assistant.create_prompt(
         task="Write a Python program to implement the binary search algorithm.",
         additional_constraints=["Code must support custom comparison functions", "Should handle empty lists and single-element lists"],
-        chain_of_thought={
-            "enable": True,
+        additional_cot={
             "instructions": "Provide a detailed reasoning process for each design decision.",
             "format": "Logical reasoning steps with explanations."
         }
@@ -111,8 +109,7 @@ if __name__ == "__main__":
         task="Write a Python program to implement the binary search algorithm.",
         context="This algorithm will be used for fast searching in large datasets, requiring optimized code to enhance search efficiency.",
         additional_constraints=["Code must support custom comparison functions", "Should handle empty lists and single-element lists"],
-        chain_of_thought={
-            "enable": True,
+        additional_cot={
             "instructions": "Please provide a comprehensive reasoning process for the implementation steps.",
             "format": "Detailed step-by-step reasoning with explanations."
         }
@@ -122,6 +119,6 @@ if __name__ == "__main__":
     print("\nCreated Prompt7 Template:")
     print(prompt7)
     print("\nPrompt7 json output:")
-    print(assistant.to_json(prompt7))
+    print(prompt7.to_json())
     print("\nPrompt7 compact json output:")
-    print(assistant.to_compact_json(prompt7))
+    print(prompt7.to_compact_json())

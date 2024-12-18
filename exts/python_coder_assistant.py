@@ -63,7 +63,7 @@ class PyCoderAssistant(PromptAssistant):
                     "length_limit": None
                 },
                 style=style if style else {"tone": "professional", "language": "Chinese"},
-                chain_of_thought=cot if cot else {"enable": False, "instructions": "", "format": ""}
+                chain_of_thought=cot if cot else {"instructions": "", "format": "", "workflow": []}
             )
             self.templates.append(template)
             return template
